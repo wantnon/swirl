@@ -30,6 +30,9 @@ public:
     //slider
     CCControlSlider* m_pSliderCtl;
     void sliderAction(CCObject* sender, CCControlEvent controlEvent);
+	//slider2
+	CCControlSlider* m_pSliderCtl2;
+    void sliderAction2(CCObject* sender, CCControlEvent controlEvent);
 public:
     vector<SceneNode*> pSceneNodeList;
     CCSprite* backGroundSprite;

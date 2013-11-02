@@ -1,8 +1,4 @@
-//********************************************************
-//           by yang chao (wantnon)
-//           2013-10-20
-//			 blog: http://350479720.qzone.qq.com
-//********************************************************
+
 #include <iostream>
 using namespace std;
 #include "cocos2d.h"

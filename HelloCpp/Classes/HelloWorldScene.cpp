@@ -83,19 +83,40 @@ bool HelloWorld::init()
     sceneNode->release();
     
     //slider
-    CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-    
-    CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
-    slider->setAnchorPoint(ccp(0.5f, 1.0f));
-    slider->setMinimumValue(0.0f); // Sets the min value of range
-    slider->setMaximumValue(6.0f); // Sets the max value of range
-    slider->setValue(pSceneNodeList[0]->bending);
-    slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 4.0f));
-    
-    // When the value of the slider will change, the given selector will be call
-    slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction), CCControlEventValueChanged);
-    m_pSliderCtl=slider;
-    addChild(m_pSliderCtl,100);
+	{
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(6.0f); // Sets the max value of range
+		slider->setValue(pSceneNodeList[0]->bending);
+		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 4.0f));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction), CCControlEventValueChanged);
+		m_pSliderCtl=slider;
+		addChild(m_pSliderCtl,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("bending ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+	}
+	//slider2
+    {
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(90.0f); // Sets the max value of range
+		slider->setValue(pSceneNodeList[0]->dA);
+		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 6.0f));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction2), CCControlEventValueChanged);
+		m_pSliderCtl2=slider;
+		addChild(m_pSliderCtl2,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("speed ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+	}
+  
     
     // author info
     {
@@ -135,6 +156,14 @@ void HelloWorld::sliderAction(CCObject* sender, CCControlEvent controlEvent)
     float value=pSlider->getValue();
     CCLOG("slider value:%f",value);
     pSceneNodeList[0]->bending=value;
+    
+}
+void HelloWorld::sliderAction2(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    CCLOG("slider value:%f",value);
+    pSceneNodeList[0]->dA=value;
     
 }
 

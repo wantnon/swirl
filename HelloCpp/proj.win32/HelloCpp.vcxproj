@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{81C493DB-D2C1-4A20-83C2-E8211B4B5835}</ProjectGuid>
+    <ProjectGuid>{9D5E00C7-756E-46F0-A2F1-03F9C1B92558}</ProjectGuid>
     <RootNamespace>HelloCppwin32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -123,6 +123,7 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\indexVBO.cpp" />
+    <ClCompile Include="..\Classes\myDef.cpp" />
     <ClCompile Include="..\Classes\myFunc.cpp" />
     <ClCompile Include="..\Classes\SceneNode.cpp" />
     <ClCompile Include="main.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="..\Classes\AppMacros.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\indexVBO.h" />
+    <ClInclude Include="..\Classes\myDef.h" />
     <ClInclude Include="..\Classes\myFunc.h" />
     <ClInclude Include="..\Classes\SceneNode.h" />
     <ClInclude Include="main.h" />

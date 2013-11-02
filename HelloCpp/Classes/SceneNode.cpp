@@ -40,6 +40,7 @@ bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
         myUnifoMap["step_t"] = glGetUniformLocation(pProgram->getProgram(),"step_t");
         myUnifoMap["texSize"] = glGetUniformLocation(pProgram->getProgram(),"texSize");
         myUnifoMap["bending"] = glGetUniformLocation(pProgram->getProgram(),"bending");
+		myUnifoMap["dA_radian"] = glGetUniformLocation(pProgram->getProgram(),"dA_radian");
         //make program_renderRipple
         program_renderRipple.myUnifoMap=myUnifoMap;
         program_renderRipple.setProgram(pProgram);
@@ -89,6 +90,7 @@ void SceneNode::draw()
     glUniform1f(program_renderRipple.myUnifoMap["step_s"],step_s);
     glUniform1f(program_renderRipple.myUnifoMap["step_t"],step_t);
     glUniform1f(program_renderRipple.myUnifoMap["bending"],bending);
+	glUniform1f(program_renderRipple.myUnifoMap["dA_radian"],dA*3.1415926/180);
     float texSize_c[2]={this->getTexture()->getContentSize().width,this->getTexture()->getContentSize().height};
     glUniform2fv(program_renderRipple.myUnifoMap["texSize"], 1, texSize_c);
     //pass texture attach point id to sampler uniform

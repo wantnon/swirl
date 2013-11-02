@@ -1,8 +1,4 @@
-//********************************************************
-//           by yang chao (wantnon) 
-//			 2013-10-20
-//			 blog: http://350479720.qzone.qq.com
-//********************************************************
+
 
 #ifndef HelloWorld_SceneNode_h
 #define HelloWorld_SceneNode_h
@@ -47,12 +43,14 @@ public:
         step_t=0;
         backGroundSprite_outRef=NULL;
         bending=3.0;
+		dA=45.0;
     
     }
 	virtual ~SceneNode(){};
 	bool init(string heightMapTexFileName,CCSprite*backGroundSprite) ;
 	void draw() ;
     float bending;
+	float dA;//per second
 private:
 	
 	CGLProgramWithMyUnifos program_renderRipple;
