@@ -43,7 +43,7 @@ public:
         step_t=0;
         backGroundSprite_outRef=NULL;
         bending=3.0;
-		dA=45.0;
+		dA=30.0;
     
     }
 	virtual ~SceneNode(){};

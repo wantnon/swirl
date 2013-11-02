@@ -105,7 +105,7 @@ bool HelloWorld::init()
 		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
 		slider->setAnchorPoint(ccp(0.5f, 0.5f));
 		slider->setMinimumValue(0.0f); // Sets the min value of range
-		slider->setMaximumValue(90.0f); // Sets the max value of range
+		slider->setMaximumValue(60.0f); // Sets the max value of range
 		slider->setValue(pSceneNodeList[0]->dA);
 		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 6.0f));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction2), CCControlEventValueChanged);
