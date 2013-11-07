@@ -1,4 +1,0 @@
-swirl
-=====
-
-swirl effect
