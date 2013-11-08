@@ -9,8 +9,6 @@ varying vec2 v_texCoord;
 uniform sampler2D CC_Texture0;//used as heightMap
 uniform sampler2D colorMap;
 
-uniform float step_s;
-uniform float step_t;
 uniform float bending;
 uniform vec2 texSize;
 uniform float dA_radian;//per second

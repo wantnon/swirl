@@ -154,7 +154,7 @@ void HelloWorld::sliderAction(CCObject* sender, CCControlEvent controlEvent)
 {
     CCControlSlider* pSlider = (CCControlSlider*)sender;
     float value=pSlider->getValue();
-    CCLOG("slider value:%f",value);
+   // CCLOG("slider value:%f",value);
     pSceneNodeList[0]->bending=value;
     
 }

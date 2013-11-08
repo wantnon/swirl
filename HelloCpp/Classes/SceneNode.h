@@ -39,8 +39,6 @@ public:
 class SceneNode : public CCSprite{//here SceneNode is a CCSprite
 public:
 	SceneNode() {
-        step_s=0;
-        step_t=0;
         backGroundSprite_outRef=NULL;
         bending=3.0;
 		dA=30.0;
@@ -55,8 +53,6 @@ private:
 	
 	CGLProgramWithMyUnifos program_renderRipple;
 
-	
-	float step_s,step_t;
     
     CCSprite * backGroundSprite_outRef;
     

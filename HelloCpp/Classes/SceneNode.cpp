@@ -17,9 +17,6 @@ bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
     this->initWithFile(heightMapTexFileName.c_str());
     //link backGroundSprite_outRef
     backGroundSprite_outRef=backGroundSprite;
-    //use bufferTexSize to calculate step_s and step_t
-    step_s=1.0/this->getTexture()->getContentSize().width;
-	step_t=1.0/this->getTexture()->getContentSize().height;
     //renderRipple shader
 	{
 		GLchar * fragSource = (GLchar*) CCString::createWithContentsOfFile(CCFileUtils::sharedFileUtils()->fullPathForFilename("renderRipple.fsh").c_str())->getCString();
@@ -36,8 +33,6 @@ bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
         //get my own uniforms
 		map<string,GLint> myUnifoMap;
         myUnifoMap["colorMap"] = glGetUniformLocation(pProgram->getProgram(),"colorMap");
-        myUnifoMap["step_s"] = glGetUniformLocation(pProgram->getProgram(),"step_s");
-        myUnifoMap["step_t"] = glGetUniformLocation(pProgram->getProgram(),"step_t");
         myUnifoMap["texSize"] = glGetUniformLocation(pProgram->getProgram(),"texSize");
         myUnifoMap["bending"] = glGetUniformLocation(pProgram->getProgram(),"bending");
 		myUnifoMap["dA_radian"] = glGetUniformLocation(pProgram->getProgram(),"dA_radian");
@@ -87,8 +82,6 @@ void SceneNode::draw()
     getShaderProgram()->use();
     getShaderProgram()->setUniformsForBuiltins();
     //pass values for my own uniforms
-    glUniform1f(program_renderRipple.myUnifoMap["step_s"],step_s);
-    glUniform1f(program_renderRipple.myUnifoMap["step_t"],step_t);
     glUniform1f(program_renderRipple.myUnifoMap["bending"],bending);
 	glUniform1f(program_renderRipple.myUnifoMap["dA_radian"],dA*3.1415926/180);
     float texSize_c[2]={this->getTexture()->getContentSize().width,this->getTexture()->getContentSize().height};
