@@ -11,11 +11,12 @@ uniform sampler2D colorMap;
 
 uniform float bending;
 uniform vec2 texSize;
-uniform float dA_radian;//per second
+uniform float angleAllPixel;
 
 void main() {
 
-    float time = 4.0*CC_Time[1];//second
+    //float time = CC_Time[1];//don't use CC_Time, because it not do wrap and may end up with huge value and overflow causing wrong effect
+    
     //texCoord_colorMap
     vec2 texCoord_colorMap=vec2(v_texCoord.s,1.0-v_texCoord.t);
     //texCoord_HMap
@@ -24,7 +25,7 @@ void main() {
     float r=distance(texCoord_heightMap,vec2(0.5,0.5));
     //offsetT
     float angleMax=bending;
-    float angle=time*dA_radian+max(0.0,angleMax-angleMax/0.5*r);
+    float angle=angleAllPixel+max(0.0,angleMax-angleMax/0.5*r);
     float cosAngle=cos(angle);
     float sinAngle=sin(angle);
     vec2 texCoord_roted=vec2(cosAngle*(texCoord_heightMap.s-0.5)-sinAngle*(texCoord_heightMap.t-0.5)+0.5,

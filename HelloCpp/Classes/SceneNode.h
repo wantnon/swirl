@@ -41,14 +41,16 @@ public:
 	SceneNode() {
         backGroundSprite_outRef=NULL;
         bending=3.0;
-		dA=30.0;
+		dA=2.0;
+        A=0.0;
     
     }
 	virtual ~SceneNode(){};
 	bool init(string heightMapTexFileName,CCSprite*backGroundSprite) ;
 	void draw() ;
     float bending;
-	float dA;//per second
+	float dA;//angle per frame
+    float A;//total angle
 private:
 	
 	CGLProgramWithMyUnifos program_renderRipple;

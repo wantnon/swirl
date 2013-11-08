@@ -35,7 +35,7 @@ bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
         myUnifoMap["colorMap"] = glGetUniformLocation(pProgram->getProgram(),"colorMap");
         myUnifoMap["texSize"] = glGetUniformLocation(pProgram->getProgram(),"texSize");
         myUnifoMap["bending"] = glGetUniformLocation(pProgram->getProgram(),"bending");
-		myUnifoMap["dA_radian"] = glGetUniformLocation(pProgram->getProgram(),"dA_radian");
+        myUnifoMap["angleAllPixel"] = glGetUniformLocation(pProgram->getProgram(), "angleAllPixel");
         //make program_renderRipple
         program_renderRipple.myUnifoMap=myUnifoMap;
         program_renderRipple.setProgram(pProgram);
@@ -51,6 +51,11 @@ bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
 }
 void SceneNode::draw()
 {
+    //update angle
+    A+=dA;
+    if(A>=360.0)A=0.0;//note: here must do the wrap, or the value of A will be overflow and cause wrong effect
+    //CCLOG("A:%f",A);
+    
     //----change shader
     setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTexture));
     ccGLEnable(m_eGLServerState);
@@ -83,7 +88,8 @@ void SceneNode::draw()
     getShaderProgram()->setUniformsForBuiltins();
     //pass values for my own uniforms
     glUniform1f(program_renderRipple.myUnifoMap["bending"],bending);
-	glUniform1f(program_renderRipple.myUnifoMap["dA_radian"],dA*3.1415926/180);
+    float angleAllPixel = A*M_PI/180;
+    glUniform1f(program_renderRipple.myUnifoMap["angleAllPixel"],angleAllPixel);
     float texSize_c[2]={this->getTexture()->getContentSize().width,this->getTexture()->getContentSize().height};
     glUniform2fv(program_renderRipple.myUnifoMap["texSize"], 1, texSize_c);
     //pass texture attach point id to sampler uniform
@@ -93,6 +99,6 @@ void SceneNode::draw()
     glBindTexture(GL_TEXTURE_2D, renderTex->getSprite()->getTexture()->getName());
     glActiveTexture(GL_TEXTURE0);//back to GL_TEXTURE0
     
-    //----cal CCSprite::draw
+    //----call CCSprite::draw
     CCSprite::draw();
 }
