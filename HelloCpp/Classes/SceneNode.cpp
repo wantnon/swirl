@@ -8,7 +8,6 @@
 using namespace cocos2d ;
 using namespace std ;
 
-
 bool SceneNode::init(string heightMapTexFileName,CCSprite*backGroundSprite)
 {
     //set projection to 2D (default is 3D). if use 3D projection, may cause tiny projection error, in some situation, if the error accumulated across frames, may cause effect wrong.
