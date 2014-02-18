@@ -54,7 +54,7 @@ bool HelloWorld::init()
     /////////////////////////////
     // 3. add your codes below...
     //enable accelerometer
-    setAccelerometerEnabled(true);
+    setAccelerometerEnabled(accelerometerOn);
     //enable touch
 	setTouchEnabled( true );
     //add a empty sprite to avoid CCLabelTTF show a block rect, and setDisplayStats(true) crash.
@@ -128,7 +128,7 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
  
-    CCLabelTTF* pLabel = CCLabelTTF::create("2D Swirl Demo", "Arial", 45);
+    CCLabelTTF* pLabel = CCLabelTTF::create("2D Swirl Demo (use accelerometer)", "Arial", 45);
     
     // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
@@ -152,6 +152,7 @@ bool HelloWorld::init()
 
 void HelloWorld::didAccelerate(CCAcceleration* pAccelerationValue)
 {
+    
     float ax= pAccelerationValue->x;// * 9.81f;
     float ay= pAccelerationValue->y;// * 9.81f;
     float az= pAccelerationValue->z;// * 9.81f;

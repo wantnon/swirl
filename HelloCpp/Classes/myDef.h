@@ -11,4 +11,5 @@
 
 #include <iostream>
 extern bool moveSwirlByTouch;
+extern bool accelerometerOn;
 #endif /* defined(__HelloCpp__myDef__) */
