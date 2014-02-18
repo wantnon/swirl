@@ -240,7 +240,6 @@
 		1839B5AD1802B681005EA308 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C33B51547F06B00633F88 /* AVFoundation.framework */; };
 		1839B5AE1802B68D005EA308 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C33B31547F06B00633F88 /* AudioToolbox.framework */; };
 		1839B5AF1802B6CA005EA308 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C33B11547F06B00633F88 /* OpenAL.framework */; };
-		18937C80181BE61A00875757 /* myFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18937C7E181BE61A00875757 /* myFunc.cpp */; };
 		189B0C1118169DFE003CDFEE /* button_dn.png in Resources */ = {isa = PBXBuildFile; fileRef = 189B0C0A18169DFE003CDFEE /* button_dn.png */; };
 		189B0C1218169DFE003CDFEE /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 189B0C0B18169DFE003CDFEE /* button.png */; };
 		189B0C211816A280003CDFEE /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C181816A21F003CDFEE /* AppDelegate.cpp */; };
@@ -248,10 +247,8 @@
 		189B0C231816A280003CDFEE /* AppMacros.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1A1816A21F003CDFEE /* AppMacros.h */; };
 		189B0C241816A280003CDFEE /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1B1816A21F003CDFEE /* HelloWorldScene.cpp */; };
 		189B0C251816A280003CDFEE /* HelloWorldScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1C1816A21F003CDFEE /* HelloWorldScene.h */; };
-		189B0C261816A280003CDFEE /* indexVBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1D1816A21F003CDFEE /* indexVBO.cpp */; };
-		189B0C271816A280003CDFEE /* indexVBO.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1E1816A21F003CDFEE /* indexVBO.h */; };
-		189B0C281816A280003CDFEE /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1F1816A21F003CDFEE /* SceneNode.cpp */; };
-		189B0C291816A280003CDFEE /* SceneNode.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C201816A21F003CDFEE /* SceneNode.h */; };
+		189B0C281816A280003CDFEE /* swirlSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1F1816A21F003CDFEE /* swirlSprite.cpp */; };
+		189B0C291816A280003CDFEE /* swirlSprite.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C201816A21F003CDFEE /* swirlSprite.h */; };
 		189B0C2A1816A2B6003CDFEE /* renderRipple.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189B0C0C18169DFE003CDFEE /* renderRipple.fsh */; };
 		18B41E8D1802FC1E007B8CDD /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */; };
 		18B41E8E1802FC1E007B8CDD /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7F1802FC1E007B8CDD /* CloseNormal.png */; };
@@ -273,6 +270,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		5713439018B30D64001FA0C2 /* glProgramWithMyUnifos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */; };
 		57241D601822690000C6D195 /* swirl_frame0.png in Resources */ = {isa = PBXBuildFile; fileRef = 57241D5D1822690000C6D195 /* swirl_frame0.png */; };
 		5770B7451822034F00EC8DC4 /* HelloWorld_iphone5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5770B7441822034F00EC8DC4 /* HelloWorld_iphone5.png */; };
 		BF1373EF128A898400D9F789 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF492D4B1289302400A09262 /* OpenGLES.framework */; };
@@ -769,8 +767,6 @@
 		1839B4F118029AC8005EA308 /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		1839B4F218029AC8005EA308 /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
 		1839B5A51802B1B1005EA308 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
-		18937C7E181BE61A00875757 /* myFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = myFunc.cpp; sourceTree = "<group>"; };
-		18937C7F181BE61A00875757 /* myFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myFunc.h; sourceTree = "<group>"; };
 		189B0C0A18169DFE003CDFEE /* button_dn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_dn.png; sourceTree = "<group>"; };
 		189B0C0B18169DFE003CDFEE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		189B0C0C18169DFE003CDFEE /* renderRipple.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderRipple.fsh; sourceTree = "<group>"; };
@@ -779,10 +775,8 @@
 		189B0C1A1816A21F003CDFEE /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacros.h; sourceTree = "<group>"; };
 		189B0C1B1816A21F003CDFEE /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorldScene.cpp; sourceTree = "<group>"; };
 		189B0C1C1816A21F003CDFEE /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldScene.h; sourceTree = "<group>"; };
-		189B0C1D1816A21F003CDFEE /* indexVBO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = indexVBO.cpp; sourceTree = "<group>"; };
-		189B0C1E1816A21F003CDFEE /* indexVBO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = indexVBO.h; sourceTree = "<group>"; };
-		189B0C1F1816A21F003CDFEE /* SceneNode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneNode.cpp; sourceTree = "<group>"; };
-		189B0C201816A21F003CDFEE /* SceneNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneNode.h; sourceTree = "<group>"; };
+		189B0C1F1816A21F003CDFEE /* swirlSprite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = swirlSprite.cpp; sourceTree = "<group>"; };
+		189B0C201816A21F003CDFEE /* swirlSprite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = swirlSprite.h; sourceTree = "<group>"; };
 		18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		18B41E7F1802FC1E007B8CDD /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		18B41E801802FC1E007B8CDD /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -804,6 +798,8 @@
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glProgramWithMyUnifos.cpp; sourceTree = "<group>"; };
+		5713438F18B30D64001FA0C2 /* glProgramWithMyUnifos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glProgramWithMyUnifos.h; sourceTree = "<group>"; };
 		57241D5D1822690000C6D195 /* swirl_frame0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swirl_frame0.png; sourceTree = "<group>"; };
 		5770B7441822034F00EC8DC4 /* HelloWorld_iphone5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld_iphone5.png; sourceTree = "<group>"; };
 		781C33B11547F06B00633F88 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -1846,14 +1842,12 @@
 				189B0C1A1816A21F003CDFEE /* AppMacros.h */,
 				189B0C1B1816A21F003CDFEE /* HelloWorldScene.cpp */,
 				189B0C1C1816A21F003CDFEE /* HelloWorldScene.h */,
-				189B0C1D1816A21F003CDFEE /* indexVBO.cpp */,
-				18937C7E181BE61A00875757 /* myFunc.cpp */,
 				18384C631825074D00E6199A /* myDef.cpp */,
 				18384C641825074D00E6199A /* myDef.h */,
-				18937C7F181BE61A00875757 /* myFunc.h */,
-				189B0C1E1816A21F003CDFEE /* indexVBO.h */,
-				189B0C1F1816A21F003CDFEE /* SceneNode.cpp */,
-				189B0C201816A21F003CDFEE /* SceneNode.h */,
+				5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */,
+				5713438F18B30D64001FA0C2 /* glProgramWithMyUnifos.h */,
+				189B0C1F1816A21F003CDFEE /* swirlSprite.cpp */,
+				189B0C201816A21F003CDFEE /* swirlSprite.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -2096,10 +2090,8 @@
 				189B0C231816A280003CDFEE /* AppMacros.h in Sources */,
 				189B0C241816A280003CDFEE /* HelloWorldScene.cpp in Sources */,
 				189B0C251816A280003CDFEE /* HelloWorldScene.h in Sources */,
-				189B0C261816A280003CDFEE /* indexVBO.cpp in Sources */,
-				189B0C271816A280003CDFEE /* indexVBO.h in Sources */,
-				189B0C281816A280003CDFEE /* SceneNode.cpp in Sources */,
-				189B0C291816A280003CDFEE /* SceneNode.h in Sources */,
+				189B0C281816A280003CDFEE /* swirlSprite.cpp in Sources */,
+				189B0C291816A280003CDFEE /* swirlSprite.h in Sources */,
 				BF365AA812A103F70050DCF4 /* AppController.mm in Sources */,
 				BF4DE6AD138BB89600CF907D /* RootViewController.mm in Sources */,
 				D4ABB4B313B4395300552E6E /* main.m in Sources */,
@@ -2110,7 +2102,6 @@
 				1839B1A418029A77005EA308 /* b2Collision.cpp in Sources */,
 				1839B1A518029A77005EA308 /* b2Distance.cpp in Sources */,
 				1839B1A618029A77005EA308 /* b2DynamicTree.cpp in Sources */,
-				18937C80181BE61A00875757 /* myFunc.cpp in Sources */,
 				1839B1A718029A77005EA308 /* b2TimeOfImpact.cpp in Sources */,
 				1839B1A818029A77005EA308 /* b2ChainShape.cpp in Sources */,
 				1839B1A918029A77005EA308 /* b2CircleShape.cpp in Sources */,
@@ -2148,6 +2139,7 @@
 				1839B1C918029A77005EA308 /* b2RopeJoint.cpp in Sources */,
 				1839B1CA18029A77005EA308 /* b2WeldJoint.cpp in Sources */,
 				1839B1CB18029A77005EA308 /* b2WheelJoint.cpp in Sources */,
+				5713439018B30D64001FA0C2 /* glProgramWithMyUnifos.cpp in Sources */,
 				1839B1E418029A77005EA308 /* b2Rope.cpp in Sources */,
 				1839B25A18029A9C005EA308 /* chipmunk.c in Sources */,
 				1839B25C18029A9C005EA308 /* cpConstraint.c in Sources */,
@@ -2335,6 +2327,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -2369,7 +2362,7 @@
 					"\"$(SRCROOT)/../../../../platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = "HelloCpp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../cocos2dx/platform/third_party/ios/libraries\"",
@@ -2420,7 +2413,7 @@
 					"\"$(SRCROOT)/../../../../platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = "HelloCpp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../cocos2dx/platform/third_party/ios/libraries\"",

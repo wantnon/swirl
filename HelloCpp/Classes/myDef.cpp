@@ -7,3 +7,4 @@
 //
 
 #include "myDef.h"
+bool moveSwirlByTouch=true;//false;

@@ -10,5 +10,5 @@
 #define __HelloCpp__myDef__
 
 #include <iostream>
-static bool moveSwirlByTouch=false;
+extern bool moveSwirlByTouch;
 #endif /* defined(__HelloCpp__myDef__) */

@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "SceneNode.h"
+#include "swirlSprite.h"
 #include "myDef.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
@@ -26,6 +26,9 @@ public:
 	virtual void ccTouchesBegan(cocos2d::CCSet* touches , cocos2d::CCEvent* event);
 	virtual void ccTouchesMoved(cocos2d::CCSet* touches , cocos2d::CCEvent* event);
 	virtual void ccTouchesEnded(cocos2d::CCSet* touches , cocos2d::CCEvent* event);
+    //accelerometer
+    virtual void didAccelerate(CCAcceleration* pAccelerationValue);
+
 public:
     //slider
     CCControlSlider* m_pSliderCtl;
@@ -34,8 +37,8 @@ public:
 	CCControlSlider* m_pSliderCtl2;
     void sliderAction2(CCObject* sender, CCControlEvent controlEvent);
 public:
-    vector<SceneNode*> pSceneNodeList;
-    CCSprite* backGroundSprite;
+    CswirlSprite*m_swirl;
+    CCSprite* m_backGroundSprite;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

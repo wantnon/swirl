@@ -1,7 +1,6 @@
 #include "HelloWorldScene.h"
 #include "AppMacros.h"
 USING_NS_CC;
-#include "SceneNode.h"
 #include "CCControlButton.h"
 using namespace cocos2d;
 
@@ -54,6 +53,8 @@ bool HelloWorld::init()
 */
     /////////////////////////////
     // 3. add your codes below...
+    //enable accelerometer
+    setAccelerometerEnabled(true);
     //enable touch
 	setTouchEnabled( true );
     //add a empty sprite to avoid CCLabelTTF show a block rect, and setDisplayStats(true) crash.
@@ -67,20 +68,18 @@ bool HelloWorld::init()
     
     
     
-    backGroundSprite=CCSprite::create();
-    backGroundSprite->initWithFile("HelloWorld_iphone5.png");
-    backGroundSprite->setAnchorPoint(ccp(0.5, 0.5));
-    backGroundSprite->setPosition(ccp(winSize.width/2, winSize.height/2));
-    this->addChild(backGroundSprite,0);
-    
+    m_backGroundSprite=CCSprite::create();
+    m_backGroundSprite->initWithFile("HelloWorld_iphone5.png");
+    m_backGroundSprite->setAnchorPoint(ccp(0.5, 0.5));
+    m_backGroundSprite->setPosition(ccp(winSize.width/2, winSize.height/2));
+    this->addChild(m_backGroundSprite,0);
     //
-    SceneNode*sceneNode=new SceneNode();
-    sceneNode->init("swirl_frame0.png",backGroundSprite);
-    sceneNode->setAnchorPoint(ccp(0.5,0.5));
-    sceneNode->setPosition(ccp(winSize.width/2, winSize.height/2));
-    this->addChild(sceneNode,1);
-    pSceneNodeList.push_back(sceneNode);
-    sceneNode->release();
+    m_swirl=new CswirlSprite();
+    m_swirl->autorelease();
+    m_swirl->init("swirl_frame0.png",m_backGroundSprite->getTexture(),m_backGroundSprite->boundingBox());
+    m_swirl->setAnchorPoint(ccp(0.5,0.5));
+    m_swirl->setPosition(ccp(winSize.width/2, winSize.height/2));
+    this->addChild(m_swirl,1);
     
     //slider
 	{
@@ -89,7 +88,7 @@ bool HelloWorld::init()
 		slider->setAnchorPoint(ccp(0.5f, 0.5f));
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(6.0f); // Sets the max value of range
-		slider->setValue(pSceneNodeList[0]->bending);
+		slider->setValue(m_swirl->getBending());
 		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 4.0f));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction), CCControlEventValueChanged);
 		m_pSliderCtl=slider;
@@ -105,8 +104,8 @@ bool HelloWorld::init()
 		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
 		slider->setAnchorPoint(ccp(0.5f, 0.5f));
 		slider->setMinimumValue(0.0f); // Sets the min value of range
-		slider->setMaximumValue(4.0f); // Sets the max value of range
-		slider->setValue(pSceneNodeList[0]->dA);
+		slider->setMaximumValue(16.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getDA());
 		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 6.0f));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction2), CCControlEventValueChanged);
 		m_pSliderCtl2=slider;
@@ -150,12 +149,27 @@ bool HelloWorld::init()
     */
     return true;
 }
+
+void HelloWorld::didAccelerate(CCAcceleration* pAccelerationValue)
+{
+    float ax= pAccelerationValue->x;// * 9.81f;
+    float ay= pAccelerationValue->y;// * 9.81f;
+    float az= pAccelerationValue->z;// * 9.81f;
+  //  CCLOG("a:%f,%f,%f",ax,ay,az);
+    CCPoint accelerationXY=CCPoint(ax,ay);
+    m_swirl->setAcceleration(accelerationXY);
+    
+    
+    
+}
+
+
 void HelloWorld::sliderAction(CCObject* sender, CCControlEvent controlEvent)
 {
     CCControlSlider* pSlider = (CCControlSlider*)sender;
     float value=pSlider->getValue();
    // CCLOG("slider value:%f",value);
-    pSceneNodeList[0]->bending=value;
+    m_swirl->setBending(value);
     
 }
 void HelloWorld::sliderAction2(CCObject* sender, CCControlEvent controlEvent)
@@ -163,7 +177,7 @@ void HelloWorld::sliderAction2(CCObject* sender, CCControlEvent controlEvent)
     CCControlSlider* pSlider = (CCControlSlider*)sender;
     float value=pSlider->getValue();
     CCLOG("slider value:%f",value);
-    pSceneNodeList[0]->dA=value;
+    m_swirl->setDA(value);
     
 }
 
@@ -216,7 +230,7 @@ void HelloWorld::ccTouchesMoved(cocos2d::CCSet* touches , cocos2d::CCEvent* even
         CCPoint loc_winSpace = touch->getLocationInView();
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         
-        if(moveSwirlByTouch)pSceneNodeList[0]->setPosition(loc_GLSpace);
+        if(moveSwirlByTouch)m_swirl->setPosition(loc_GLSpace);
 
     
         
@@ -241,7 +255,7 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         //CCLOG("loc_GLSpace:%f,%f",loc_GLSpace.x,loc_GLSpace.y);
        
-        if(moveSwirlByTouch)pSceneNodeList[0]->setPosition(loc_GLSpace);
+        if(moveSwirlByTouch)m_swirl->setPosition(loc_GLSpace);
         
     }
 }
