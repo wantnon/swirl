@@ -121,21 +121,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\glProgramWithMyUnifos.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="..\Classes\indexVBO.cpp" />
     <ClCompile Include="..\Classes\myDef.cpp" />
-    <ClCompile Include="..\Classes\myFunc.cpp" />
-    <ClCompile Include="..\Classes\SceneNode.cpp" />
+    <ClCompile Include="..\Classes\swirlSprite.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\glProgramWithMyUnifos.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="..\Classes\indexVBO.h" />
     <ClInclude Include="..\Classes\myDef.h" />
-    <ClInclude Include="..\Classes\myFunc.h" />
-    <ClInclude Include="..\Classes\SceneNode.h" />
+    <ClInclude Include="..\Classes\swirlSprite.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
