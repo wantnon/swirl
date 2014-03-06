@@ -42,6 +42,8 @@ bool CswirlSprite::init(string heightMapTexFileName,CCTexture2D*backGroundTex,CC
         program->attachUniform("backGroundTexLUPos");
         program->attachUniform("bending");
         program->attachUniform("angleAllPixel");
+        program->attachUniform("extraColor");
+        program->attachUniform("fakeRefraction");
         this->setShaderProgram(program);
         //check gl error
 		CHECK_GL_ERROR_DEBUG();
@@ -98,10 +100,13 @@ void CswirlSprite::draw()
     if(m_A>=360.0)m_A=0.0;//note: here must do the wrap, or the value of A will be overflow and cause wrong effect
     //----prepare uniform values
     float angleAllPixel_tmp = m_A*M_PI/180;
-    float texSize_tmp[2]={this->getTexture()->getContentSize().width,this->getTexture()->getContentSize().height};
+    float texSize_tmp[2]={this->boundingBox().getMaxX()-this->boundingBox().getMinX(),this->boundingBox().getMaxY()-this->boundingBox().getMinY()};//{this->getTexture()->getContentSize().width,this->getTexture()->getContentSize().height};
+  //  CCLOG("texSize:%f,%f",texSize_tmp[0],texSize_tmp[1]);
     float texLUPos_tmp[2]={this->boundingBox().getMinX(),this->boundingBox().getMaxY()};
+  //  CCLOG("texLUPos:%f,%f",texLUPos_tmp[0],texLUPos_tmp[1]);
     float backGroundTexLUPos_tmp[2]={m_backGroundRect.getMinX(),m_backGroundRect.getMaxY()};
     float backGroundTexSize_tmp[2]={m_backGroundTex->getContentSize().width,m_backGroundTex->getContentSize().height};
+    float extraColor_tmp[4]={this->m_extraColor.r,this->m_extraColor.g,this->m_extraColor.b,this->m_extraColor.a};
     //----change shader
     ccGLEnable(m_eGLServerState);
     //pass values for cocos2d-x build-in uniforms
@@ -115,6 +120,8 @@ void CswirlSprite::draw()
     program->passUnifoValueNfv("backGroundTexSize", backGroundTexSize_tmp, 2);
     program->passUnifoValueNfv("texLUPos", texLUPos_tmp, 2);
     program->passUnifoValueNfv("backGroundTexLUPos", backGroundTexLUPos_tmp, 2);
+    program->passUnifoValueNfv("extraColor", extraColor_tmp, 4);
+    program->passUnifoValue1f("fakeRefraction", m_fakeRefraction);
     //pass texture attach point id to sampler uniform
     program->passUnifoValue1i("colorMap", 1);
     //attach texture to texture attach point

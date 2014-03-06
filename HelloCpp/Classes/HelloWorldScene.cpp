@@ -54,7 +54,7 @@ bool HelloWorld::init()
     /////////////////////////////
     // 3. add your codes below...
     //enable accelerometer
-    setAccelerometerEnabled(accelerometerOn);
+    setAccelerometerEnabled(true);
     //enable touch
 	setTouchEnabled( true );
     //add a empty sprite to avoid CCLabelTTF show a block rect, and setDisplayStats(true) crash.
@@ -65,6 +65,8 @@ bool HelloWorld::init()
     
     //show frame rate info
     CCDirector::sharedDirector()->setDisplayStats(true);
+    //start update
+    this->scheduleUpdate();
     
     
     
@@ -89,7 +91,7 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(6.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getBending());
-		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 4.0f));
+		slider->setPosition(ccp(screenSize.width *0.35, 200));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction), CCControlEventValueChanged);
 		m_pSliderCtl=slider;
 		addChild(m_pSliderCtl,100);
@@ -106,7 +108,7 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(16.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getDA());
-		slider->setPosition(ccp(screenSize.width / 2.0f, screenSize.height / 6.0f));
+		slider->setPosition(ccp(screenSize.width *0.35, 200-40));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction2), CCControlEventValueChanged);
 		m_pSliderCtl2=slider;
 		addChild(m_pSliderCtl2,100);
@@ -115,7 +117,129 @@ bool HelloWorld::init()
 		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
         this->addChild(pLabel, 1);
 	}
-  
+    //slider3
+    {
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(2.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getScale());
+		slider->setPosition(ccp(screenSize.width *0.35, 200-80));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction3), CCControlEventValueChanged);
+		m_pSliderCtl3=slider;
+		addChild(m_pSliderCtl3,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("size ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+	}
+    //-------
+    //slider4
+	{
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(1.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getfakeRefraction());
+		slider->setPosition(ccp(screenSize.width *0.35, 200-120));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction4), CCControlEventValueChanged);
+		m_pSliderCtl4=slider;
+		addChild(m_pSliderCtl4,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("refraction ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+	}
+    //-------
+    //sliderR
+	{
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(255.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getExtraColor().r*255);
+		slider->setPosition(ccp(screenSize.width *0.75, 200));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderActionR), CCControlEventValueChanged);
+		m_pSliderCtlR=slider;
+		addChild(m_pSliderCtlR,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("R ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+        //valueStr
+        pLabelR = CCLabelTTF::create(numberToStr((int)(m_swirl->getExtraColor().r*255)).c_str(), "Arial", 40);
+		pLabelR->setPosition(ccp(slider->getPositionX()+slider->getContentSize().width/2+pLabelR->getContentSize().width/2+15, slider->getPositionY()));
+        this->addChild(pLabelR, 1);
+        
+	}
+	//sliderG
+    {
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(255.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getExtraColor().g*255);
+		slider->setPosition(ccp(screenSize.width *0.75, 200-40));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderActionG), CCControlEventValueChanged);
+		m_pSliderCtlG=slider;
+		addChild(m_pSliderCtlG,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("G ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+        //valueStr
+        pLabelG = CCLabelTTF::create(numberToStr((int)(m_swirl->getExtraColor().g*255)).c_str(), "Arial", 40);
+		pLabelG->setPosition(ccp(slider->getPositionX()+slider->getContentSize().width/2+pLabelG->getContentSize().width/2+15, slider->getPositionY()));
+        this->addChild(pLabelG, 1);
+	}
+    //sliderB
+    {
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(255.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getExtraColor().b*255);
+		slider->setPosition(ccp(screenSize.width *0.75, 200-80));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderActionB), CCControlEventValueChanged);
+		m_pSliderCtlB=slider;
+		addChild(m_pSliderCtlB,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("B ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+        //valueStr
+        pLabelB = CCLabelTTF::create(numberToStr((int)(m_swirl->getExtraColor().b*255)).c_str(), "Arial", 40);
+		pLabelB->setPosition(ccp(slider->getPositionX()+slider->getContentSize().width/2+pLabelB->getContentSize().width/2+15, slider->getPositionY()));
+        this->addChild(pLabelB, 1);
+	}
+    //sliderA
+	{
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(255.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getExtraColor().a*255);
+		slider->setPosition(ccp(screenSize.width *0.75, 200-120));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderActionA), CCControlEventValueChanged);
+		m_pSliderCtlA=slider;
+		addChild(m_pSliderCtlA,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("A ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+        //valueStr
+        pLabelA = CCLabelTTF::create(numberToStr((int)(m_swirl->getExtraColor().a*255)).c_str(), "Arial", 40);
+		pLabelA->setPosition(ccp(slider->getPositionX()+slider->getContentSize().width/2+pLabelA->getContentSize().width/2+15, slider->getPositionY()));
+        this->addChild(pLabelA, 1);
+	}
+
+
     
     // author info
     {
@@ -163,6 +287,17 @@ void HelloWorld::didAccelerate(CCAcceleration* pAccelerationValue)
     
     
 }
+void HelloWorld::update(float t){
+    if(!(m_targetPoint.x==-1&&m_targetPoint.y==-1)){//if target not invalid
+        CCPoint swirlToTargetDir=ccpNormalize(m_targetPoint-m_swirl->getPosition());
+        float swirlToTargetLen=ccpLength(m_targetPoint-m_swirl->getPosition());
+        float velocityLen=MIN(7,swirlToTargetLen);
+        CCPoint velocity=ccpMult(swirlToTargetDir, velocityLen);
+        CCPoint oldVelocity=m_swirl->getVelocity();
+        CCPoint blendVelocity=ccpMult(velocity+oldVelocity,0.5);
+        m_swirl->setVelocity(blendVelocity);
+    }
+}
 
 
 void HelloWorld::sliderAction(CCObject* sender, CCControlEvent controlEvent)
@@ -177,8 +312,73 @@ void HelloWorld::sliderAction2(CCObject* sender, CCControlEvent controlEvent)
 {
     CCControlSlider* pSlider = (CCControlSlider*)sender;
     float value=pSlider->getValue();
-    CCLOG("slider value:%f",value);
+  //  CCLOG("slider value:%f",value);
     m_swirl->setDA(value);
+    
+}
+void HelloWorld::sliderAction3(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+  //  CCLOG("slider value:%f",value);
+    m_swirl->setScale(value);
+    
+}
+void HelloWorld::sliderAction4(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    // CCLOG("slider value:%f",value);
+    m_swirl->setfakeRefraction(value);
+    
+}
+void HelloWorld::sliderActionR(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    // CCLOG("slider value:%f",value);
+    ccColor4F color=m_swirl->getExtraColor();
+    color.r=value/255.0;
+    m_swirl->setExtraColor(color);
+    pLabelR->setString(numberToStr((int)(m_swirl->getExtraColor().r*255)).c_str());
+    pLabelR->setPosition(ccp(m_pSliderCtlR->getPositionX()+m_pSliderCtlR->getContentSize().width/2+pLabelR->getContentSize().width/2+15, m_pSliderCtlR->getPositionY()));
+    
+}
+void HelloWorld::sliderActionG(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    // CCLOG("slider value:%f",value);
+    ccColor4F color=m_swirl->getExtraColor();
+    color.g=value/255.0;
+    m_swirl->setExtraColor(color);
+    pLabelG->setString(numberToStr((int)(m_swirl->getExtraColor().g*255)).c_str());
+    pLabelG->setPosition(ccp(m_pSliderCtlG->getPositionX()+m_pSliderCtlG->getContentSize().width/2+pLabelG->getContentSize().width/2+15, m_pSliderCtlG->getPositionY()));
+    
+    
+}
+void HelloWorld::sliderActionB(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    // CCLOG("slider value:%f",value);
+    ccColor4F color=m_swirl->getExtraColor();
+    color.b=value/255.0;
+    m_swirl->setExtraColor(color);
+    pLabelB->setString(numberToStr((int)(m_swirl->getExtraColor().b*255)).c_str());
+    pLabelB->setPosition(ccp(m_pSliderCtlB->getPositionX()+m_pSliderCtlB->getContentSize().width/2+pLabelB->getContentSize().width/2+15, m_pSliderCtlB->getPositionY()));
+    
+}
+void HelloWorld::sliderActionA(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    //CCLOG("slider value:%f",value);
+    ccColor4F color=m_swirl->getExtraColor();
+    color.a=value/255.0;
+    m_swirl->setExtraColor(color);
+    pLabelA->setString(numberToStr((int)(m_swirl->getExtraColor().a*255)).c_str());
+    pLabelA->setPosition(ccp(m_pSliderCtlA->getPositionX()+m_pSliderCtlA->getContentSize().width/2+pLabelA->getContentSize().width/2+15, m_pSliderCtlA->getPositionY()));
     
 }
 
@@ -212,7 +412,7 @@ void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
         CCPoint loc_winSpace = touch->getLocationInView();
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         
-        
+        m_targetPoint=CCPoint(-1,-1);//invalid
     }
 }
 void HelloWorld::ccTouchesMoved(cocos2d::CCSet* touches , cocos2d::CCEvent* event)
@@ -231,7 +431,7 @@ void HelloWorld::ccTouchesMoved(cocos2d::CCSet* touches , cocos2d::CCEvent* even
         CCPoint loc_winSpace = touch->getLocationInView();
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         
-        if(moveSwirlByTouch)m_swirl->setPosition(loc_GLSpace);
+        m_targetPoint=loc_GLSpace;
 
     
         
@@ -255,8 +455,8 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
         CCPoint loc_winSpace = touch->getLocationInView();
         CCPoint loc_GLSpace = CCDirector::sharedDirector()->convertToGL(loc_winSpace);
         //CCLOG("loc_GLSpace:%f,%f",loc_GLSpace.x,loc_GLSpace.y);
-       
-        if(moveSwirlByTouch)m_swirl->setPosition(loc_GLSpace);
+        m_targetPoint=loc_GLSpace;
+        
         
     }
 }

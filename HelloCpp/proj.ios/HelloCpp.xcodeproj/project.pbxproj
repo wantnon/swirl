@@ -271,6 +271,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		5713439018B30D64001FA0C2 /* glProgramWithMyUnifos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */; };
+		571B335B18C82E0800873087 /* myFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 571B335918C82E0800873087 /* myFunc.cpp */; };
 		57241D601822690000C6D195 /* swirl_frame0.png in Resources */ = {isa = PBXBuildFile; fileRef = 57241D5D1822690000C6D195 /* swirl_frame0.png */; };
 		5770B7451822034F00EC8DC4 /* HelloWorld_iphone5.png in Resources */ = {isa = PBXBuildFile; fileRef = 5770B7441822034F00EC8DC4 /* HelloWorld_iphone5.png */; };
 		BF1373EF128A898400D9F789 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF492D4B1289302400A09262 /* OpenGLES.framework */; };
@@ -800,6 +801,8 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glProgramWithMyUnifos.cpp; sourceTree = "<group>"; };
 		5713438F18B30D64001FA0C2 /* glProgramWithMyUnifos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glProgramWithMyUnifos.h; sourceTree = "<group>"; };
+		571B335918C82E0800873087 /* myFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = myFunc.cpp; sourceTree = "<group>"; };
+		571B335A18C82E0800873087 /* myFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myFunc.h; sourceTree = "<group>"; };
 		57241D5D1822690000C6D195 /* swirl_frame0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swirl_frame0.png; sourceTree = "<group>"; };
 		5770B7441822034F00EC8DC4 /* HelloWorld_iphone5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld_iphone5.png; sourceTree = "<group>"; };
 		781C33B11547F06B00633F88 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -1842,6 +1845,8 @@
 				189B0C1A1816A21F003CDFEE /* AppMacros.h */,
 				189B0C1B1816A21F003CDFEE /* HelloWorldScene.cpp */,
 				189B0C1C1816A21F003CDFEE /* HelloWorldScene.h */,
+				571B335918C82E0800873087 /* myFunc.cpp */,
+				571B335A18C82E0800873087 /* myFunc.h */,
 				18384C631825074D00E6199A /* myDef.cpp */,
 				18384C641825074D00E6199A /* myDef.h */,
 				5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */,
@@ -2104,6 +2109,7 @@
 				1839B1A618029A77005EA308 /* b2DynamicTree.cpp in Sources */,
 				1839B1A718029A77005EA308 /* b2TimeOfImpact.cpp in Sources */,
 				1839B1A818029A77005EA308 /* b2ChainShape.cpp in Sources */,
+				571B335B18C82E0800873087 /* myFunc.cpp in Sources */,
 				1839B1A918029A77005EA308 /* b2CircleShape.cpp in Sources */,
 				1839B1AA18029A77005EA308 /* b2EdgeShape.cpp in Sources */,
 				1839B1AB18029A77005EA308 /* b2PolygonShape.cpp in Sources */,
@@ -2326,8 +2332,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ceshifour chukong (M2ZUBLQG77)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ceshifour chukong (M2ZUBLQG77)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -2369,7 +2375,7 @@
 					"\"$(SRCROOT)/../../../../external/libwebsockets/ios/lib\"",
 				);
 				PRODUCT_NAME = HelloCpp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5D4A4A43-8434-4FAD-AF30-0FE7FFB9866E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -2381,7 +2387,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ceshifour chukong (M2ZUBLQG77)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2420,7 +2426,7 @@
 					"\"$(SRCROOT)/../../../../external/libwebsockets/ios/lib\"",
 				);
 				PRODUCT_NAME = HelloCpp;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5D4A4A43-8434-4FAD-AF30-0FE7FFB9866E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

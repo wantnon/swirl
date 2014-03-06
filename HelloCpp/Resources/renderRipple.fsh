@@ -17,6 +17,8 @@ uniform float angleAllPixel;
 uniform vec2 backGroundTexSize;
 uniform vec2 backGroundTexLUPos;
 uniform vec2 texLUPos;
+uniform vec4 extraColor;
+uniform float fakeRefraction;
 
 void main() {
 
@@ -41,16 +43,18 @@ void main() {
     vec2 offsetT=texCoord_roted-texCoord_heightMap;
 
     
+    //H
+    vec3 Hrgb=texture2D(CC_Texture0, texCoord_heightMap+offsetT).rgb;
+    float H=(Hrgb.r+Hrgb.b)*max(0.0,1.0-r*2.0);
     //offsetH
-    vec3 h_rgb=texture2D(CC_Texture0, texCoord_heightMap+offsetT).rgb;
-    float h_r=h_rgb.r;
-    float h_b=h_rgb.b;
-    float h=(h_r+h_b)*max(0.0,1.0-r*2.0);
-    float _offsetH=h*0.8;
-    vec2 offsetH=vec2(_offsetH,_offsetH);
+    vec2 offsetH=vec2(H*fakeRefraction);
+    //colorMapColor
+    vec4 colorMapColor=texture2D(colorMap,texCoord_colorMap+offsetH);
     //final color
-	gl_FragColor=texture2D(colorMap,texCoord_colorMap+offsetH)*(1.0+h*7.0);
-    gl_FragColor.a=1.0;//(1.0-h*0.2);
+    float colorBlendScale=20.0;
+    float colorBlendFactor=H*H*extraColor.a*colorBlendScale;
+    gl_FragColor=colorMapColor*(1.0-colorBlendFactor)+extraColor*colorBlendFactor;
+    gl_FragColor.a=1.0;
     
 
 

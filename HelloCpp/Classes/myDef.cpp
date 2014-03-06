@@ -7,5 +7,3 @@
 //
 
 #include "myDef.h"
-bool moveSwirlByTouch=false;//false;
-bool accelerometerOn=true;//true
