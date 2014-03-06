@@ -19,7 +19,7 @@ public:
         //
         m_backGroundTex=NULL;
         m_bending=3.0;
-		m_dA=6.0;
+		m_dA=4.5;
         m_A=0.0;
         m_prisonBox=CCRect(visibleOrigin.x, visibleOrigin.y, visibleSize.width, visibleSize.height);
         m_damping=0.94;
