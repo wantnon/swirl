@@ -50,6 +50,9 @@ public:
     //slider4
     CCControlSlider* m_pSliderCtl4;
     void sliderAction4(CCObject* sender, CCControlEvent controlEvent);
+    //slider5
+    CCControlSlider* m_pSliderCtl5;
+    void sliderAction5(CCObject* sender, CCControlEvent controlEvent);
     //--------
     //sliderR
     CCControlSlider* m_pSliderCtlR;

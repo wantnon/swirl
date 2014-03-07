@@ -19,6 +19,7 @@ uniform vec2 backGroundTexLUPos;
 uniform vec2 texLUPos;
 uniform vec4 extraColor;
 uniform float fakeRefraction;
+uniform float highlight;
 
 void main() {
 
@@ -50,10 +51,11 @@ void main() {
     vec2 offsetH=vec2(H*fakeRefraction);
     //colorMapColor
     vec4 colorMapColor=texture2D(colorMap,texCoord_colorMap+offsetH);
-    //final color
+    //blend factor
     float colorBlendScale=20.0;
     float colorBlendFactor=H*H*extraColor.a*colorBlendScale;
-    gl_FragColor=colorMapColor*(1.0-colorBlendFactor)+extraColor*colorBlendFactor;
+    //final color
+    gl_FragColor=(colorMapColor*(1.0-colorBlendFactor)+extraColor*colorBlendFactor)*(1.0+highlight*H);
     gl_FragColor.a=1.0;
     
 

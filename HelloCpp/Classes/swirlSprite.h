@@ -25,6 +25,7 @@ public:
         m_damping=0.94;
         m_extraColor=ccc4f(1,0,0,0.3);
         m_fakeRefraction=1.0;//0.8
+        m_highlight=0;
     }
 	virtual ~CswirlSprite(){
         if(m_backGroundTex)m_backGroundTex->release();
@@ -50,6 +51,8 @@ public:
     void setExtraColor(const ccColor4F&extraColor){m_extraColor=extraColor;}
     void setfakeRefraction(float value){m_fakeRefraction=value;}
     float getfakeRefraction()const{return m_fakeRefraction;}
+    void setHighlight(float value){m_highlight=value;}
+    float getHighlight()const{return m_highlight;}
 protected:
     float m_bending;
 	float m_dA;//angle per frame
@@ -62,6 +65,7 @@ protected:
     CCRect m_prisonBox;
     ccColor4F m_extraColor;
     float m_fakeRefraction;
+    float m_highlight;
     
 
 };

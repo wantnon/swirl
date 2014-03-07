@@ -91,7 +91,7 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(6.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getBending());
-		slider->setPosition(ccp(screenSize.width *0.35, 200));
+		slider->setPosition(ccp(screenSize.width *0.35, 240));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction), CCControlEventValueChanged);
 		m_pSliderCtl=slider;
 		addChild(m_pSliderCtl,100);
@@ -108,7 +108,7 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(16.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getDA());
-		slider->setPosition(ccp(screenSize.width *0.35, 200-40));
+		slider->setPosition(ccp(screenSize.width *0.35, 240-40));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction2), CCControlEventValueChanged);
 		m_pSliderCtl2=slider;
 		addChild(m_pSliderCtl2,100);
@@ -125,7 +125,7 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(2.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getScale());
-		slider->setPosition(ccp(screenSize.width *0.35, 200-80));
+		slider->setPosition(ccp(screenSize.width *0.35, 240-80));
 		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction3), CCControlEventValueChanged);
 		m_pSliderCtl3=slider;
 		addChild(m_pSliderCtl3,100);
@@ -134,8 +134,25 @@ bool HelloWorld::init()
 		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
         this->addChild(pLabel, 1);
 	}
-    //-------
     //slider4
+	{
+		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
+		slider->setAnchorPoint(ccp(0.5f, 0.5f));
+		slider->setMinimumValue(0.0f); // Sets the min value of range
+		slider->setMaximumValue(40.0f); // Sets the max value of range
+		slider->setValue(m_swirl->getHighlight());
+		slider->setPosition(ccp(screenSize.width *0.35, 240-120));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction4), CCControlEventValueChanged);
+		m_pSliderCtl4=slider;
+		addChild(m_pSliderCtl4,100);
+		//title
+		CCLabelTTF* pLabel = CCLabelTTF::create("highlight ", "Arial", 40);
+		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
+        this->addChild(pLabel, 1);
+	}
+
+    //slider5
 	{
 		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 		CCControlSlider *slider = CCControlSlider::create("sliderTrack.png","sliderProgress.png" ,"sliderThumb.png");
@@ -143,16 +160,16 @@ bool HelloWorld::init()
 		slider->setMinimumValue(0.0f); // Sets the min value of range
 		slider->setMaximumValue(1.0f); // Sets the max value of range
 		slider->setValue(m_swirl->getfakeRefraction());
-		slider->setPosition(ccp(screenSize.width *0.35, 200-120));
-		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction4), CCControlEventValueChanged);
-		m_pSliderCtl4=slider;
-		addChild(m_pSliderCtl4,100);
+		slider->setPosition(ccp(screenSize.width *0.35, 240-160));
+		slider->addTargetWithActionForControlEvents(this, cccontrol_selector(HelloWorld::sliderAction5), CCControlEventValueChanged);
+		m_pSliderCtl5=slider;
+		addChild(m_pSliderCtl5,100);
 		//title
 		CCLabelTTF* pLabel = CCLabelTTF::create("refraction ", "Arial", 40);
 		pLabel->setPosition(ccp(slider->getPositionX()-slider->getContentSize().width/2-pLabel->getContentSize().width/2, slider->getPositionY()));
         this->addChild(pLabel, 1);
 	}
-    //-------
+        //-------
     //sliderR
 	{
 		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
@@ -329,9 +346,18 @@ void HelloWorld::sliderAction4(CCObject* sender, CCControlEvent controlEvent)
     CCControlSlider* pSlider = (CCControlSlider*)sender;
     float value=pSlider->getValue();
     // CCLOG("slider value:%f",value);
+    m_swirl->setHighlight(value);
+    
+}
+void HelloWorld::sliderAction5(CCObject* sender, CCControlEvent controlEvent)
+{
+    CCControlSlider* pSlider = (CCControlSlider*)sender;
+    float value=pSlider->getValue();
+    // CCLOG("slider value:%f",value);
     m_swirl->setfakeRefraction(value);
     
 }
+
 void HelloWorld::sliderActionR(CCObject* sender, CCControlEvent controlEvent)
 {
     CCControlSlider* pSlider = (CCControlSlider*)sender;

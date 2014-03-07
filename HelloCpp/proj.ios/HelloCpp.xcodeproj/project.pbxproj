@@ -249,7 +249,6 @@
 		189B0C251816A280003CDFEE /* HelloWorldScene.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1C1816A21F003CDFEE /* HelloWorldScene.h */; };
 		189B0C281816A280003CDFEE /* swirlSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C1F1816A21F003CDFEE /* swirlSprite.cpp */; };
 		189B0C291816A280003CDFEE /* swirlSprite.h in Sources */ = {isa = PBXBuildFile; fileRef = 189B0C201816A21F003CDFEE /* swirlSprite.h */; };
-		189B0C2A1816A2B6003CDFEE /* renderRipple.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189B0C0C18169DFE003CDFEE /* renderRipple.fsh */; };
 		18B41E8D1802FC1E007B8CDD /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7D1802FC1E007B8CDD /* Marker Felt.ttf */; };
 		18B41E8E1802FC1E007B8CDD /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E7F1802FC1E007B8CDD /* CloseNormal.png */; };
 		18B41E8F1802FC1E007B8CDD /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B41E801802FC1E007B8CDD /* CloseSelected.png */; };
@@ -270,6 +269,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		57007E6618C9A7F600586347 /* swirl.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 57007E6518C9A7F600586347 /* swirl.fsh */; };
 		5713439018B30D64001FA0C2 /* glProgramWithMyUnifos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */; };
 		571B335B18C82E0800873087 /* myFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 571B335918C82E0800873087 /* myFunc.cpp */; };
 		57241D601822690000C6D195 /* swirl_frame0.png in Resources */ = {isa = PBXBuildFile; fileRef = 57241D5D1822690000C6D195 /* swirl_frame0.png */; };
@@ -770,7 +770,6 @@
 		1839B5A51802B1B1005EA308 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		189B0C0A18169DFE003CDFEE /* button_dn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_dn.png; sourceTree = "<group>"; };
 		189B0C0B18169DFE003CDFEE /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
-		189B0C0C18169DFE003CDFEE /* renderRipple.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = renderRipple.fsh; sourceTree = "<group>"; };
 		189B0C181816A21F003CDFEE /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		189B0C191816A21F003CDFEE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		189B0C1A1816A21F003CDFEE /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacros.h; sourceTree = "<group>"; };
@@ -799,6 +798,7 @@
 		1D6058910D05DD3D006BFB54 /* HelloCpp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloCpp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		57007E6518C9A7F600586347 /* swirl.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = swirl.fsh; sourceTree = "<group>"; };
 		5713438E18B30D64001FA0C2 /* glProgramWithMyUnifos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = glProgramWithMyUnifos.cpp; sourceTree = "<group>"; };
 		5713438F18B30D64001FA0C2 /* glProgramWithMyUnifos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glProgramWithMyUnifos.h; sourceTree = "<group>"; };
 		571B335918C82E0800873087 /* myFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = myFunc.cpp; sourceTree = "<group>"; };
@@ -1867,10 +1867,10 @@
 				189B0C0A18169DFE003CDFEE /* button_dn.png */,
 				18384C5D1825017A00E6199A /* sliderProgress.png */,
 				18384C5E1825017A00E6199A /* sliderThumb.png */,
+				57007E6518C9A7F600586347 /* swirl.fsh */,
 				18384C5F1825017A00E6199A /* sliderTrack.png */,
 				189B0C0B18169DFE003CDFEE /* button.png */,
 				57241D5D1822690000C6D195 /* swirl_frame0.png */,
-				189B0C0C18169DFE003CDFEE /* renderRipple.fsh */,
 				5770B7441822034F00EC8DC4 /* HelloWorld_iphone5.png */,
 				18B41E9A1802FEAA007B8CDD /* Icon-57.png */,
 				18B41E9B1802FEAA007B8CDD /* Icon-72.png */,
@@ -2048,8 +2048,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				189B0C2A1816A2B6003CDFEE /* renderRipple.fsh in Resources */,
 				1839B25B18029A9C005EA308 /* CMakeLists.txt in Resources */,
+				57007E6618C9A7F600586347 /* swirl.fsh in Resources */,
 				18384C611825017A00E6199A /* sliderThumb.png in Resources */,
 				1839B38618029AB8005EA308 /* Android.mk in Resources */,
 				1839B38D18029AB9005EA308 /* websockets.dll in Resources */,

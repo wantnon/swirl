@@ -22,7 +22,7 @@ bool CswirlSprite::init(string heightMapTexFileName,CCTexture2D*backGroundTex,CC
     m_backGroundRect=backGroundRect;
     //create and set shader program
 	{
-		GLchar * fragSource = (GLchar*) CCString::createWithContentsOfFile(CCFileUtils::sharedFileUtils()->fullPathForFilename("renderRipple.fsh").c_str())->getCString();
+		GLchar * fragSource = (GLchar*) CCString::createWithContentsOfFile(CCFileUtils::sharedFileUtils()->fullPathForFilename("swirl.fsh").c_str())->getCString();
 		CGLProgramWithMyUnifos* program = new CGLProgramWithMyUnifos();
         program->autorelease();
 		program->initWithVertexShaderByteArray(ccPositionTextureColor_vert, fragSource);
@@ -44,6 +44,7 @@ bool CswirlSprite::init(string heightMapTexFileName,CCTexture2D*backGroundTex,CC
         program->attachUniform("angleAllPixel");
         program->attachUniform("extraColor");
         program->attachUniform("fakeRefraction");
+        program->attachUniform("highlight");
         this->setShaderProgram(program);
         //check gl error
 		CHECK_GL_ERROR_DEBUG();
@@ -122,6 +123,7 @@ void CswirlSprite::draw()
     program->passUnifoValueNfv("backGroundTexLUPos", backGroundTexLUPos_tmp, 2);
     program->passUnifoValueNfv("extraColor", extraColor_tmp, 4);
     program->passUnifoValue1f("fakeRefraction", m_fakeRefraction);
+    program->passUnifoValue1f("highlight", m_highlight);
     //pass texture attach point id to sampler uniform
     program->passUnifoValue1i("colorMap", 1);
     //attach texture to texture attach point
