@@ -29,6 +29,9 @@
     <ClCompile Include="..\Classes\swirlSprite.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\myFunc.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -50,6 +53,9 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\swirlSprite.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\myFunc.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
