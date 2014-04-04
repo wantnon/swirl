@@ -20,6 +20,7 @@ uniform vec2 texLUPos;
 uniform vec4 extraColor;
 uniform float fakeRefraction;
 uniform float highlight;
+uniform vec2 refractionCenter;
 
 void main() {
 
@@ -29,6 +30,12 @@ void main() {
     vec2 texCoord_colorMap=vec2((v_texCoord.s*texSize.x+texLUPos.x-backGroundTexLUPos.x)/backGroundTexSize.x,
                                 (v_texCoord.t*texSize.y+backGroundTexLUPos.y-texLUPos.y)/backGroundTexSize.y
                                 );
+    /*   vec2 swirlCenterColorMapCoord=vec2((0.5*texSize.x+texLUPos.x-backGroundTexLUPos.x)/backGroundTexSize.x,
+     (0.5*texSize.y+backGroundTexLUPos.y-texLUPos.y)/backGroundTexSize.y
+     );*/
+    vec2 refractionCenterColorMapCoord= vec2((refractionCenter.x-backGroundTexLUPos.x)/backGroundTexSize.x,
+                                             (refractionCenter.y-backGroundTexLUPos.y)/backGroundTexSize.y
+                                             );
 
     //texCoord_HMap
     vec2 texCoord_heightMap=v_texCoord;
@@ -48,7 +55,8 @@ void main() {
     vec3 Hrgb=texture2D(CC_Texture0, texCoord_heightMap+offsetT).rgb;
     float H=(Hrgb.r+Hrgb.b)*max(0.0,1.0-r*2.0);
     //offsetH
-    vec2 offsetH=vec2(H*fakeRefraction);
+    //vec2 offsetH=vec2(H*fakeRefraction);
+    vec2 offsetH=(refractionCenterColorMapCoord-texCoord_colorMap)*H*fakeRefraction;
     //colorMapColor
     vec4 colorMapColor=texture2D(colorMap,texCoord_colorMap+offsetH);
     //blend factor

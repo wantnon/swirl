@@ -23,9 +23,9 @@ public:
         m_A=0.0;
         m_prisonBox=CCRect(visibleOrigin.x, visibleOrigin.y, visibleSize.width, visibleSize.height);
         m_damping=0.94;
-        m_extraColor=ccc4f(1,0,0,0.3);
+        m_extraColor=ccc4f(71.0/255, 78.0/255, 93.0/255, 154.0/255);
         m_fakeRefraction=1.0;//0.8
-        m_highlight=0;
+        m_highlight=3.5;
     }
 	virtual ~CswirlSprite(){
         if(m_backGroundTex)m_backGroundTex->release();
@@ -53,6 +53,7 @@ public:
     float getfakeRefraction()const{return m_fakeRefraction;}
     void setHighlight(float value){m_highlight=value;}
     float getHighlight()const{return m_highlight;}
+    void setRefractionCenter(CCPoint refractionCenter){m_refractionCenter=refractionCenter;}
 protected:
     float m_bending;
 	float m_dA;//angle per frame
@@ -66,6 +67,7 @@ protected:
     ccColor4F m_extraColor;
     float m_fakeRefraction;
     float m_highlight;
+    CCPoint m_refractionCenter;
     
 
 };

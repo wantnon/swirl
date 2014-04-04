@@ -45,6 +45,7 @@ bool CswirlSprite::init(string heightMapTexFileName,CCTexture2D*backGroundTex,CC
         program->attachUniform("extraColor");
         program->attachUniform("fakeRefraction");
         program->attachUniform("highlight");
+        program->attachUniform("refractionCenter");
         this->setShaderProgram(program);
         //check gl error
 		CHECK_GL_ERROR_DEBUG();
@@ -108,6 +109,7 @@ void CswirlSprite::draw()
     float backGroundTexLUPos_tmp[2]={m_backGroundRect.getMinX(),m_backGroundRect.getMaxY()};
     float backGroundTexSize_tmp[2]={m_backGroundTex->getContentSize().width,m_backGroundTex->getContentSize().height};
     float extraColor_tmp[4]={this->m_extraColor.r,this->m_extraColor.g,this->m_extraColor.b,this->m_extraColor.a};
+    float refractionCenter_tmp[4]={m_refractionCenter.x,m_refractionCenter.y};
     //----change shader
     ccGLEnable(m_eGLServerState);
     //pass values for cocos2d-x build-in uniforms
@@ -124,6 +126,7 @@ void CswirlSprite::draw()
     program->passUnifoValueNfv("extraColor", extraColor_tmp, 4);
     program->passUnifoValue1f("fakeRefraction", m_fakeRefraction);
     program->passUnifoValue1f("highlight", m_highlight);
+    program->passUnifoValueNfv("refractionCenter", refractionCenter_tmp, 2);
     //pass texture attach point id to sampler uniform
     program->passUnifoValue1i("colorMap", 1);
     //attach texture to texture attach point

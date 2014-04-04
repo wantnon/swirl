@@ -81,6 +81,9 @@ bool HelloWorld::init()
     m_swirl->init("swirl_frame0.png",m_backGroundSprite->getTexture(),m_backGroundSprite->boundingBox());
     m_swirl->setAnchorPoint(ccp(0.5,0.5));
     m_swirl->setPosition(ccp(winSize.width/2, winSize.height/2));
+    CCRect boundingBox=m_swirl->boundingBox();
+    float r=(boundingBox.getMaxX()-boundingBox.getMinX())/2;
+    m_swirl->setRefractionCenter(ccp(winSize.width/2+r, winSize.height/2));
     this->addChild(m_swirl,1);
     
     //slider
